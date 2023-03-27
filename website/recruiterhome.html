@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #8c6fda;
+      }
+
+      li {
+        float: left;
+      }
+
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      /* Change the link color to #111 (black) on hover */
+      li a:hover {
+        background-color: #111;
+      }
+      table,
+      td,
+      th {
+        /* font-style: Roboto; */
+        border: 1px solid #ddd;
+        text-align: left;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 2px solid #000;
+      }
+      th {
+        background-color: #04aa6d;
+      }
+      th,
+      td {
+        padding: 15px;
+      }
+      tr:hover {
+        background-color: coral;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <ul>
+        <li><a href="jobseekerhome.html">Home</a></li>
+        <li style="float: right">
+          <a class="active" href="index.html">Logout</a>
+        </li>
+      </ul>
+    </div>
+    <h3>Job applications</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>JobID</th>
+          <th>Role</th>
+          <th>Job Seeker</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="data">
+        <tr href="jobseekerinterview.html" onclick="gotopage(1)">
+          <td>10</td>
+          <td>Front End Developer</td>
+          <td>Rakesh</td>
+          <td>Completed test by 27/3/23 and waiting for your approval</td>
+        </tr>
+        <tr href="jobseekerinterview.html" onclick="gotopage(1)">
+          <td>10</td>
+          <td>Front End Developer</td>
+          <td>Satish</td>
+          <td>Rejected (Reason: Caught copying) </td>
+        </tr>
+        <tr href="jobseekerinterview.html" onclick="gotopage(1)">
+          <td>19</td>
+          <td>Full stack Developer</td>
+          <td>Vasanth</td>
+          <td>Offer letter accepted</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

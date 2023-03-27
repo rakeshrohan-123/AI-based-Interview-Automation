@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quiz Dialogue Box</title>
+    <style>
+      body {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      #quizBox {
+        display: none;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
+  </head>
+  <body oncontextmenu="return false;">
+    <div id="camera-container">
+      <div id="camera"></div>
+    </div>
+    <button id="startQuiz">Start Quiz</button>
+    <div id="quizBox">
+      <h1>Quiz</h1>
+      <p id="question">Question goes here</p>
+      <label><input type="radio" name="answer" value="A" />Option A</label>
+      <label><input type="radio" name="answer" value="B" />Option B</label>
+      <label><input type="radio" name="answer" value="C" />Option C</label>
+      <button id="submitAnswer">Submit Answer</button>
+    </div>
+
+    <script>
+      document.onkeydown = function (e) {
+        if (
+          e.ctrlKey &&
+          (e.keyCode === 67 || e.keyCode === 86 || e.keyCode === 88)
+        ) {
+          return false;
+        }
+      };
+      window.onbeforeunload = function () {
+        return "Are you sure you want to leave the quiz?";
+      };
+      // window.onblur = function () {
+      //   alert("Please do not switch tabs");
+      //   window.focus();
+      // };
+      Webcam.set({
+        width: 640,
+        height: 480,
+        dest_width: 640,
+        dest_height: 480,
+        image_format: "jpeg",
+        jpeg_quality: 90,
+        constraints: {
+          facingMode: "user",
+        },
+      });
+
+      Webcam.attach("#camera");
+
+      const startQuizButton = document.querySelector("#startQuiz");
+      const quizBox = document.querySelector("#quizBox");
+      const question = document.querySelector("#question");
+      const answerButtons = document.querySelectorAll('input[name="answer"]');
+      const submitAnswerButton = document.querySelector("#submitAnswer");
+
+      const quizQuestions = [
+        {
+          question: "What is the capital of France?",
+          options: ["Paris", "London", "Berlin"],
+          answer: "Paris",
+        },
+        {
+          question: "What is the largest planet in our solar system?",
+          options: ["Mars", "Jupiter", "Earth"],
+          answer: "Jupiter",
+        },
+        {
+          question: "What is the tallest mountain in the world?",
+          options: ["Mount Everest", "Mount Kilimanjaro", "Mount Fuji"],
+          answer: "Mount Everest",
+        },
+      ];
+
+      let currentQuestionIndex = 0;
+
+      startQuizButton.addEventListener("click", () => {
+        startQuizButton.style.display = "none";
+        quizBox.style.display = "block";
+        showQuestion();
+      });
+
+      submitAnswerButton.addEventListener("click", () => {
+        const selectedAnswer = document.querySelector(
+          'input[name="answer"]:checked'
+        );
+        if (!selectedAnswer) {
+          alert("Please select an answer");
+          return;
+        }
+
+        if (currentQuestionIndex === quizQuestions.length - 1) {
+          alert("Quiz complete!");
+          window.location.href = "jobseekerinterview.html"
+        } else {
+          currentQuestionIndex++;
+          showQuestion();
+        }
+      });
+
+      function showQuestion() {
+        const currentQuestion = quizQuestions[currentQuestionIndex];
+        question.textContent = currentQuestion.question;
+        for (let i = 0; i < answerButtons.length; i++) {
+          answerButtons[i].value = currentQuestion.options[i];
+          answerButtons[i].checked = false;
+        }
+      }
+    </script>
+  </body>
+</html>

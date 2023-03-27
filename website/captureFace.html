@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Face Capture</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
+    <style>
+      body {
+        width: 100vw;
+        height: 100vh;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      } 
+
+      .sidepanel {
+        width: 0;
+        position: fixed;
+        z-index: 9999;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: #070101;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+      }
+
+      .sidepanel a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 18px;
+        color: #fff;
+        display: block;
+        transition: 0.3s;
+      }
+
+      .sidepanel a:hover {
+        color: #fcc10e;
+      }
+
+      .sidepanel .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+      }
+
+      .openbtn {
+        font-size: 20px;
+        cursor: pointer;
+        background-color: transparent;
+        padding: 10px 15px;
+        border: none;
+        display: block;
+        background-color: #070101;
+      }
+
+      .right_bottun {
+        float: right;
+      }
+
+      .header {
+        display: block;
+        width: 100%;
+        padding: 30px 30px;
+        position: absolute;
+        z-index: 999;
+      }
+
+      #camera-container {
+        padding: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: #333;
+      }
+      #captured-photos {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .photo {
+        margin: 10px;
+        width: 200px;
+        height: 150px;
+        object-fit: cover;
+        border: 2px solid #333;
+      }
+
+      #capture-btn {
+        position: relative;
+        background-color: #e4e42f;
+        border: none;
+        font-size: 10px;
+        margin: 10px;
+        color: #000000;
+        padding: 20px;
+        width: 200px;
+        text-align: center;
+        transition-duration: 0.4s;
+        text-decoration: none;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      #capture-btn:after {
+        content: "";
+        background: #f1f1f1;
+        display: block;
+        position: absolute;
+        padding-top: 300%;
+        padding-left: 350%;
+        margin-left: -20px !important;
+        margin-top: -120%;
+        opacity: 0;
+        transition: all 0.8s;
+      }
+
+      #capture-btn:active:after {
+        padding: 0;
+        margin: 0;
+        opacity: 1;
+        transition: 0s;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div id="mySidepanel" class="sidepanel">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="jobseekerhome.html">Home</a>
+        <a href="index.html"> Logout</a>
+      </div>
+      <header>
+        <div class="header">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                <div class="right_bottun">
+                  <button class="openbtn" onclick="openNav()">
+                    <img src="images/menu_icon.png" alt="#" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+    <div id="camera-container">
+      <div id="camera"></div>
+      <button id="capture-btn">Click here to capture</button>
+    </div>
+    <div id="captured-photos"></div>
+    <script>
+      function openNav() {
+        document.getElementById("mySidepanel").style.width = "250px";
+      }
+
+      function closeNav() {
+        document.getElementById("mySidepanel").style.width = "0";
+      }
+      Webcam.set({
+        width: 640,
+        height: 480,
+        dest_width: 640,
+        dest_height: 480,
+        image_format: "jpeg",
+        jpeg_quality: 90,
+        constraints: {
+          facingMode: "user",
+        },
+      });
+
+      Webcam.attach("#camera");
+
+      var capturedPhotos = [];
+
+      document
+        .getElementById("capture-btn")
+        .addEventListener("click", function () {
+          if (capturedPhotos.length >= 9) {
+            alert("You have captured the maximum number of photos!");
+            return;
+          }
+
+          Webcam.snap(function (data_uri) {
+            var img = new Image();
+            img.src = data_uri;
+            img.classList.add("photo");
+            document.getElementById("captured-photos").appendChild(img);
+            capturedPhotos.push(data_uri);
+          });
+        });
+    </script>
+  </body>
+</html>

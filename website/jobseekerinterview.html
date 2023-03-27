@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
+  </head>
+  <body>
+    <div id="camera-container">
+      <div id="camera"></div>
+    </div>
+    <h2>What is Object Oriented Programming?</h2>
+    <button id="submitAns" onclick="gotohome()">submit answer</button>
+    <script>
+      function gotohome() {
+        window.location.href = "jobseekerhome.html";
+      }
+      document.onkeydown = function (e) {
+        if (
+          e.ctrlKey &&
+          (e.keyCode === 67 || e.keyCode === 86 || e.keyCode === 88)
+        ) {
+          return false;
+        }
+      };
+      window.onbeforeunload = function () {
+        return "Are you sure you want to leave the quiz?";
+      };
+      window.onblur = function () {
+        alert("Please do not switch tabs");
+        window.focus();
+      };
+      Webcam.set({
+        width: 640,
+        height: 480,
+        dest_width: 640,
+        dest_height: 480,
+        image_format: "jpeg",
+        jpeg_quality: 90,
+        constraints: {
+          facingMode: "user",
+        },
+      });
+
+      Webcam.attach("#camera");
+    </script>
+  </body>
+</html>
