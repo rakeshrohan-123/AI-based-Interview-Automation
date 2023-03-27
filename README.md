@@ -1,1 +1,10 @@
 # AI-based-Interview-Automation
+![Screenshot (8)](https://user-images.githubusercontent.com/66308480/228010892-1196a9c1-898e-47df-99e4-534114c6b3dd.png)
+![Screenshot (9)](https://user-images.githubusercontent.com/66308480/228010934-b4d09834-65e7-4b44-9cd9-f2866f7b89d8.png)
+![Screenshot (10)](https://user-images.githubusercontent.com/66308480/228010966-df256981-8111-4b19-af5b-3a649ef072ea.png)
+![Screenshot (11)](https://user-images.githubusercontent.com/66308480/228011002-3799cd5e-12ee-4cd4-8242-c91746b7543e.png)
+![Screenshot (12)](https://user-images.githubusercontent.com/66308480/228011020-b5379e3a-c2eb-41b7-9407-e3af36ddded3.png)
+![Screenshot (13)](https://user-images.githubusercontent.com/66308480/228011042-0d9c79b3-2fb1-4c8f-9a92-db65e147c6fb.png)
+![Screenshot (14)](https://user-images.githubusercontent.com/66308480/228011067-2781f01c-82a2-4d33-91c3-5dc3415b1371.png)
+![screenshot](https://user-images.githubusercontent.com/66308480/228011142-7b5be5c6-693a-4420-88f7-f29fdac39766.png)
+![screenshot (1)](https://user-images.githubusercontent.com/66308480/228011231-125dbe52-9ff1-4951-a079-dec234019fce.png)
